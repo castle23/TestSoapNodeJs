@@ -17,6 +17,16 @@ console.log("\n\n to XML 1 -> %s", parser.toXml(json));
 // Cliente SOAP print JSON 
   var url = 'http://www.holidaywebservice.com//HolidayService_v2/HolidayService2.asmx?wsdl';
   soap.createClient(url, function(err, client) {
+    
+    //en caso de que necesite seguridad basic
+    //client.setSecurity(new soap.BasicAuthSecurity('username', 'password'));
+    
+    //o por token
+    //client.setSecurity(new soap.BearerSecurity('token'));
+
+    //En caso de Que se necesite otro Header
+    //client.addHttpHeader('User-Agent', `CustomUserAgent`);
+
       client.GetCountriesAvailable(function(err, result) {
           console.log("\n\n to json 2 -> %s", JSON.stringify(result));
 
